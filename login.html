@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <title>Login</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .main-header h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .error-message {
+            background-color: #ffcccc;
+            color: #cc0000;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .register-link a {
+            color: green;
+            text-decoration: none;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        
+        #error-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* Add spacing between email and password fields */
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        input[type="email"] {
+            margin-bottom: 20px;
+        }
+        
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="main-header">
+                <h1>Login</h1>
+            </div>
+            <div class="background">
+                <img src="/static/assets/login-background.jpg" alt="" class="desktop-background">
+            </div>
+            {% if error %}
+                <div class="error-message">
+                    <h2>Login failed:</h2>
+                    <p>{{ error }}</p>
+                </div>
+            {% endif %}
+            <form action="/login" method="POST">
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="password" required>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+            <div class="footer">
+                <a href="https://rachanahegde.squarespace.com/">© Rachana Hegde</a>
+            </div>
+            <div class="register-link">
+                <p>Don't have an account ? <a href="/" style="color: green;">Register here</a></p>
+            </div>
+        </div>
+    </main>
+
+    <div id="error-message" class="error-message hidden">
+        <h2>Login failed:</h2>
+        <p id="error-text"></p>
+    </div>
+</body>
+</html>
